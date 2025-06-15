@@ -25,3 +25,28 @@ texto_de_prueba = """
 Hoy es sábado, 15 de junio de 2024. También tenemos una fecha abreviada: 24-06-15. Y otra larga: lunes, 03 de marzo de 2025.
 """
 validar_texto(texto_de_prueba)
+
+
+
+
+# Inciso D
+def validar_usuario(nombre_usuario):
+    patron = r'^[a-zA-Z0-9_-]{8,12}$'
+    if re.fullmatch(patron, nombre_usuario):
+        return True
+    else:
+        return False
+
+#Ejemplos
+usuarios = [
+    "usuario_01",     # válido
+    "user-1234",      # válido
+    "user!",          # inválido (carácter no permitido y menos de 8 caracteres)
+    "us",             # inválido (muy corto, menos de 8 caracteres)
+    "usuario_extralargo",  # inválido (muy largo, mas de 8 caracteres)
+    "user_name-12"    # válido
+]
+
+#Prueba de usuarios
+for u in usuarios:
+    print(f"{u}: {'Válido' if validar_usuario(u) else 'Inválido'}")
